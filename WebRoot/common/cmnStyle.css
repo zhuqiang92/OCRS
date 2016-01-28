@@ -1,0 +1,23 @@
+/*****common*****/
+body {FONT-SIZE: 12px;}
+td {FONT-SIZE: 12px;}
+input {FONT-SIZE: 12px; border-color: black; border-style: solid; border-width: 1px;}
+button {FONT-SIZE: 12px; border-color: black; border-style: solid; border-width: 1px;}
+
+.menuCommon {FONT-SIZE: 12px; text-align:center; width:100px; height:30px; cursor:hand; background:url("../img/menuCommon.gif");}
+.menuSelect {FONT-SIZE: 12px; text-align:center; width:100px; height:30px; cursor:arrow; background:url("../img/menuSelect.gif");}
+
+textarea {FONT-SIZE: 12px; border-color: black; border-style: solid; border-width: 1px;}
+div { height:100%;width:100%;overflow-y:auto;}
+.td_title {FONT-SIZE: 12px; COLOR: white; background-color: #FFFFFF;}
+.hide {display: none;}
+a:link {FONT-SIZE: 12px;;color: #000000;text-decoration: none;}
+a:visited {FONT-SIZE: 12px;color: #996633;text-decoration: none;}
+a:hover {FONT-SIZE: 12px;color: #ffaa00;text-decoration: underline;}
+
+/*****detail*****/
+.td_label {FONT-SIZE: 12px; COLOR: black; BACKGROUND-COLOR: #cccccc; HEIGHT: 18px; }
+.td_content {FONT-SIZE: 12px; COLOR: black; PADDING-LEFT: 2px; BACKGROUND-COLOR: #FFFFFF;}
+.sel { font-size: 12px; width: 150px; position: relative; left: -2px; top: -2px;}
+.sel_span { border:1 solid #000000; height: 19px; width: 149px; }
+.sel_div { border:1 solid #FFFFFF; overflow: hidden; width: 147px; height: 17px; }
