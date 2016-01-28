@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This product includes software developed by the
  * Apache Software Foundation (http://www.apache.org/).
  */
@@ -9,7 +9,7 @@ import java.sql.*;
 import javax.servlet.http.*;
 
 /**
- * ���һЩ��ͨ����ĸ���
+ * 针对一些共通处理的父类
  * @author ShenYK
  * @version 1.0
  */
@@ -17,12 +17,12 @@ public class Common extends HttpServlet
 {
     public Connection getDBConnection()
     {
-        //����������ݿ�
+        //尝试连接数据库
         try
         {
-            //����MySQL��JDBC����
+            //载入MySQL的JDBC驱动类
             Class.forName( "com.mysql.jdbc.Driver" );
-            //�����ݿ�����
+            //获得数据库连接
             Connection conn = DriverManager.getConnection( "jdbc:mysql://localhost/ch04?user=root&password=1234" );
             
             return conn;
