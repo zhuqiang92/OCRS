@@ -1,51 +1,51 @@
-window.onload = windowLoad;
+ï»¿window.onload = windowLoad;
 //---------------------------------
 
-//Ò³ÃæÔØÈëÊ±µ÷ÓÃ
+//é¡µé¢è½½å…¥æ—¶è°ƒç”¨
 function windowLoad()
 {
     cmnWindowLoad();
     form_main.username.focus();
 }
 
-//±íµ¥resetµÄÊ±ºò£¬ĞèÒª×öµÄÌØÊâ´¦Àí
+//è¡¨å•resetçš„æ—¶å€™ï¼Œéœ€è¦åšçš„ç‰¹æ®Šå¤„ç†
 function resetForm()
 {
     form_main.username.focus();
 }
 
-//µÇÂ¼Ç°µÄ¼ì²é
+//ç™»å½•å‰çš„æ£€æŸ¥
 function checkInput()
 {
-    //¼ì²éÓÃ»§Ãû
+    //æ£€æŸ¥ç”¨æˆ·å
     if ( form_main.username.value.length < 1 )
     {
         form_main.username.focus();
         form_main.username.select();
-        alert("ÓÃ»§Ãû²»ÄÜÎª¿Õ£¡");
+        alert("ç”¨æˆ·åä¸èƒ½ä¸ºç©ºï¼");
         return false;
     }
     if ( getLength(form_main.username.value)>20 )
     {
         form_main.username.focus();
         form_main.username.select();
-        alert("ÓÃ»§Ãû³¤¶È²»ÄÜ³¬¹ı20¸ö°ë½Ç³¤¶È¡£");
+        alert("ç”¨æˆ·åé•¿åº¦ä¸èƒ½è¶…è¿‡20ä¸ªåŠè§’é•¿åº¦ã€‚");
         return false;
     }
     
-    //¼ì²éÃÜÂë
+    //æ£€æŸ¥å¯†ç 
     if ( form_main.password.value.length < 1 )
     {
         form_main.password.focus();
         form_main.password.select();
-        alert("ÃÜÂë²»ÄÜÎª¿Õ£¡");
+        alert("å¯†ç ä¸èƒ½ä¸ºç©ºï¼");
         return false;
     }
     if ( getLength(form_main.password.value)>20 )
     {
         form_main.password.focus();
         form_main.password.select();
-        alert("ÃÜÂë³¤¶È²»ÄÜ³¬¹ı20¸ö°ë½Ç³¤¶È¡£");
+        alert("å¯†ç é•¿åº¦ä¸èƒ½è¶…è¿‡20ä¸ªåŠè§’é•¿åº¦ã€‚");
         return false;
     }
     

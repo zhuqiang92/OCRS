@@ -1,72 +1,72 @@
-window.onload = windowLoad;
+ï»¿window.onload = windowLoad;
 //---------------------------------
 
-//Ò³ÃæÔØÈëÊ±µ÷ÓÃ
+//é¡µé¢è½½å…¥æ—¶è°ƒç”¨
 function windowLoad()
 {
     cmnWindowLoad();
     form_main.courseId.focus();
 }
 
-//±íµ¥resetµÄÊ±ºò£¬ĞèÒª×öµÄÌØÊâ´¦Àí
+//è¡¨å•resetçš„æ—¶å€™ï¼Œéœ€è¦åšçš„ç‰¹æ®Šå¤„ç†
 function resetForm()
 {
     form_main.courseId.focus();
 }
 
-//µÇÂ¼Ç°µÄ¼ì²é
+//ç™»å½•å‰çš„æ£€æŸ¥
 function checkInput()
 {
-    //¼ì²é¿Î³Ì±àºÅ
+    //æ£€æŸ¥è¯¾ç¨‹ç¼–å·
     if ( form_main.courseId.value.length < 6 )
     {
         form_main.courseId.focus();
         form_main.courseId.select();
-        alert("¿Î³Ì±àºÅ±ØĞëÊäÈë6Î»×Ö·û£¡");
+        alert("è¯¾ç¨‹ç¼–å·å¿…é¡»è¾“å…¥6ä½å­—ç¬¦ï¼");
         return false;
     }
     
-    //¼ì²é¿Î³ÌÃû³Æ
+    //æ£€æŸ¥è¯¾ç¨‹åç§°
     if ( form_main.courseName.value.length < 1 )
     {
         form_main.courseName.focus();
         form_main.courseName.select();
-        alert("¿Î³ÌÃû³Æ²»ÄÜÎª¿Õ£¡");
+        alert("è¯¾ç¨‹åç§°ä¸èƒ½ä¸ºç©ºï¼");
         return false;
     }
     
-    //¼ì²é½ÌÊ¦ĞÕÃû
+    //æ£€æŸ¥æ•™å¸ˆå§“å
     if ( form_main.teacher.value.length < 1 )
     {
         form_main.teacher.focus();
         form_main.teacher.select();
-        alert("½ÌÊ¦ĞÕÃû²»ÄÜÎª¿Õ£¡");
+        alert("æ•™å¸ˆå§“åä¸èƒ½ä¸ºç©ºï¼");
         return false;
     }
     
-    //¼ì²éÑ§·Ö
+    //æ£€æŸ¥å­¦åˆ†
     if ( form_main.point.value < "1" || form_main.point.value > "6" )
     {
         form_main.point.focus();
         form_main.point.select();
-        alert("Ñ§·Ö±ØĞëÊäÈë1¡«6Ö®¼äµÄÊı×Ö£¡");
+        alert("å­¦åˆ†å¿…é¡»è¾“å…¥1ï½6ä¹‹é—´çš„æ•°å­—ï¼");
         return false;
     }
     
-    //¼ì²éÏŞÖÆÈËÊı
+    //æ£€æŸ¥é™åˆ¶äººæ•°
     if ( form_main.limited.value.length < 1 )
     {
         form_main.limited.focus();
         form_main.limited.select();
-        alert("ÏŞÖÆÈËÊı²»ÄÜÎª¿Õ£¡");
+        alert("é™åˆ¶äººæ•°ä¸èƒ½ä¸ºç©ºï¼");
         return false;
     }
     
-    //¼ì²é¿Î³ÌÊ±¼ä
+    //æ£€æŸ¥è¯¾ç¨‹æ—¶é—´
     if ( form_main.time1D.value + form_main.time1T.value == form_main.time2D.value + form_main.time2T.value )
     {
         form_main.time1D.focus();
-        alert("Á½´ÎÉÏ¿ÎÊ±¼äÏàÍ¬£¬ÇëÈ·ÈÏ£¡");
+        alert("ä¸¤æ¬¡ä¸Šè¯¾æ—¶é—´ç›¸åŒï¼Œè¯·ç¡®è®¤ï¼");
         return false;
     }
     return true;

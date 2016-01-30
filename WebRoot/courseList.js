@@ -1,7 +1,7 @@
-window.onload = windowLoad;
+ï»¿window.onload = windowLoad;
 //---------------------------------
 
-//Ò³ÃæÔØÈëÊ±µ÷ÓÃ
+//é¡µé¢è½½å…¥æ—¶è°ƒç”¨
 function windowLoad()
 {
     cmnWindowLoad();
