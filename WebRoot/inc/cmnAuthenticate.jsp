@@ -1,4 +1,4 @@
-<%@page contentType="text/html;charset=gbk" %>
+<%@page contentType="text/html;charset=utf-8" %>
 <%@page language="java" import="java.util.*" %>
 <%
 if(session.getAttribute("username") == null )

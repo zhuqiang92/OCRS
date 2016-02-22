@@ -21,7 +21,7 @@ public class Login extends Common
         throws ServletException, IOException
     {
         //设置提交表单的中文编码
-        request.setCharacterEncoding("GBK");
+        request.setCharacterEncoding("UTF-8");
         HttpSession mySession = request.getSession(true);
         
         //清空错误消息

@@ -1,7 +1,7 @@
-<%@page contentType="text/html;charset=gbk" %>
+<%@page contentType="text/html;charset=utf-8" %>
 <%@page language="java" import="java.util.*" %>
 <%@page language="java" import="ch04.*" %>
-<%@ include file="inc/cmnAuthenticate.jsp" %>
+<%@include file="inc/cmnAuthenticate.jsp" %>
 <%
 Vector vCourses = (Vector)session.getAttribute("courses");
 if ( vCourses == null )
@@ -11,11 +11,11 @@ if ( vCourses == null )
 %>
 <html>
 <head>
-  <title>ѡ�����һ��</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+  <title>选课情况一览</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <script language="JAVASCRIPT" src="common/cmnScript.js"></script>
   <script language="JAVASCRIPT" src="courseList.js"></script>
-  <link rel="stylesheet" type="text/css" href="common\cmnStyle.css" TITLE="common"></link>
+  <link rel="stylesheet" href="common/css/bootstrap.min.css" type="text/css"></link>
 
   <script language="JAVASCRIPT">
 <%
@@ -51,12 +51,12 @@ if ( vCourses == null )
       <table border=0 cellpadding=0 cellspacing=0 bgcolor="#ffffff" width=700>
         <tr>
           <td align=left height=20>
-            ��ӭ�㣬<font color=blue><%=session.getAttribute("realname")%></font>��
+            欢迎你，<font color=blue><%=session.getAttribute("realname")%></font>！
           </td>
           <td align=right>
-            <a href="servlet/AddCourse">�����¿γ�</a>
+            <a href="servlet/AddCourse">添加新课程</a>
             &nbsp;| &nbsp;
-            <a href="logout.jsp">�˳���¼</a>
+            <a href="logout.jsp">退出登录</a>
             &nbsp;
           </td>
         </tr>
@@ -65,10 +65,10 @@ if ( vCourses == null )
   </tr>
   <tr>
     <td>
-      <table border=0 cellpadding=0 cellspacing=0 bgcolor="#ffffff" width=700>
+      <table border=0 cellpadding=0 cellspacing=0 bgcolor="#ffffff"><!-- width=700 -->
         <tr>
           <td>
-            <br>&nbsp;&nbsp;Ŀǰ��ѡ��������£�
+            <br>&nbsp;&nbsp;目前的选课情况如下：
           </td>
         </tr>
         <tr>
@@ -77,29 +77,17 @@ if ( vCourses == null )
         </tr>
         <tr>
           <td align=center height=300 valign=top>
-            <table border=0 cellpadding=0 cellspacing=2 bgcolor="#ffffff" width=680>
-              <tr bgcolor=#cccccc height=18>
-                <td width=50 align=center>
-                  �γ̱��
-                </td>
-                <td width=250 align=center>
-                  �γ�����
-                </td>
-                <td width=50 align=center>
-                  �ڿ���ʦ
-                </td>
-                <td width=40 align=center>
-                  ѧ��
-                </td>
-                <td width=150 align=center>
-                  �Ͽ�ʱ��
-                </td>
-                <td width=50 align=center>
-                  ��������
-                </td>
-                <td width=50 align=center>
-                  ��ѡ����
-                </td>
+             <table class="table table-hover table-bordered" border=0 cellpadding=0 cellspacing=2 bgcolor="#ffffff"><!-- width=680 -->
+              <thead bgcolor=#CCCCFF height=18>
+                <th align=center>课程编号</th>
+                <th align=center><!-- width=250  -->课程名称</th>
+                <th align=center><!-- width=50  -->授课老师</th>
+                <th align=center><!-- width=40  --> 学分</th>
+                <th align=center><!-- width=150  -->上课时间</th>
+                <th align=center><!-- width=50  -->限制人数</th>
+                <th align=center><!-- width=50  -->已选人数</th>
+              </thead>
+              <tbody>
 <%
 for ( int i=0; i<vCourses.size(); i++ )
 {
@@ -131,6 +119,7 @@ for ( int i=0; i<vCourses.size(); i++ )
 <%
 }
 %>
+              </tbody>
             </table>
           </td>
         </tr>

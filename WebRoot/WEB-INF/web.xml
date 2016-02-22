@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+ï»¿<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
     version="2.4">
 
-<!-- Õë¶Ôlogin»­ÃæµÄServlet-->
+<!--é’ˆå¯¹loginç”»é¢çš„Servlet-->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>ch04.servlet.Login</servlet-class>
@@ -15,7 +15,7 @@
         <url-pattern>/servlet/Login</url-pattern>
     </servlet-mapping>
 
-<!-- Õë¶ÔÑ§ÉúÑ¡¿Î»­ÃæµÄServlet-->
+<!--é’ˆå¯¹å­¦ç”Ÿé€‰è¯¾ç”»é¢çš„Servlet-->
     <servlet>
         <servlet-name>ChooseCourseServlet</servlet-name>
         <servlet-class>ch04.servlet.ChooseCourse</servlet-class>
@@ -25,7 +25,7 @@
         <url-pattern>/servlet/ChooseCourse</url-pattern>
     </servlet-mapping>
     
-<!-- Õë¶ÔÑ§ÉúÑ¡¿Î½á¹û»­ÃæµÄServlet-->
+<!--é’ˆå¯¹å­¦ç”Ÿé€‰è¯¾ç»“æžœç”»é¢çš„Servlet-->
     <servlet>
         <servlet-name>ViewCourseServlet</servlet-name>
         <servlet-class>ch04.servlet.ViewCourse</servlet-class>
@@ -35,7 +35,7 @@
         <url-pattern>/servlet/ViewCourse</url-pattern>
     </servlet-mapping>
 
-<!-- Õë¶Ô½ÌÊ¦²é¿´Ñ¡¿Î½á¹û»­ÃæµÄServlet-->
+<!--é’ˆå¯¹æ•™å¸ˆæŸ¥çœ‹é€‰è¯¾ç»“æžœç”»é¢çš„Servlet-->
     <servlet>
         <servlet-name>CourseListServlet</servlet-name>
         <servlet-class>ch04.servlet.CourseList</servlet-class>
@@ -45,7 +45,7 @@
         <url-pattern>/servlet/CourseList</url-pattern>
     </servlet-mapping>
 
-<!-- Õë¶Ô½ÌÊ¦Ìí¼Ó¿Î³Ì»­ÃæµÄServlet-->
+<!--é’ˆå¯¹æ•™å¸ˆæ·»åŠ è¯¾ç¨‹ç”»é¢çš„Servlet-->
     <servlet>
         <servlet-name>AddCourseServlet</servlet-name>
         <servlet-class>ch04.servlet.AddCourse</servlet-class>

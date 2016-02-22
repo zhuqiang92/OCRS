@@ -1,7 +1,7 @@
-<%@page contentType="text/html;charset=gbk" %>
+<%@page contentType="text/html;charset=utf-8" %>
 <%@page language="java" import="java.util.*" %>
 <%@page language="java" import="ch04.*" %>
-<%@ include file="inc/cmnAuthenticate.jsp" %>
+<%@include file="inc/cmnAuthenticate.jsp" %>
 <%
 Vector vCourses = (Vector)session.getAttribute("courses");
 if ( vCourses == null )
@@ -11,12 +11,12 @@ if ( vCourses == null )
 %>
 <html>
 <head>
-  <title>ÔÚÏßÑ¡¿Î</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+  <title>åœ¨çº¿é€‰è¯¾</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <script language="JAVASCRIPT" src="common/cmnScript.js"></script>
   <script language="JAVASCRIPT" src="chooseCourse.js"></script>
-  <link rel="stylesheet" type="text/css" href="common\cmnStyle.css" TITLE="common"></link>
-
+  <link rel="stylesheet" href="common/css/bootstrap.min.css" type="text/css"></link>
+ 
   <script language="JAVASCRIPT">
 <%
     if ( session.getAttribute("errMsg") != null )
@@ -36,7 +36,9 @@ if ( vCourses == null )
 </head>
 
 <body>
-<table border=0 cellpadding=0 cellspacing=0 height=10>
+<div class="container">
+
+<table >
   <tr>
     <td>
       &nbsp;
@@ -45,18 +47,18 @@ if ( vCourses == null )
 </table>
 <form name="form_main" action="servlet/ChooseCourse" method="post" 
       onsubmit="return checkInput();" onreset="resetForm()">
-<table border=0 cellpadding=0 cellspacing=2 bgcolor="#000000" align=center>
+<table align=center>
   <tr>
     <td>
-      <table border=0 cellpadding=0 cellspacing=0 bgcolor="#ffffff" width=700>
+      <table>
         <tr>
           <td align=left height=20>
-            »¶Ó­Äã£¬<font color=blue><%=session.getAttribute("realname")%></font>£¡
+            æ¬¢è¿ä½ ï¼Œ<font color=blue><%=session.getAttribute("realname")%></font>ï¼
           </td>
           <td align=right>
-            <a href="servlet/ViewCourse">ÒÑÑ¡¿Î³ÌÁĞ±í</a>
+            <a href="servlet/ViewCourse">å·²é€‰è¯¾ç¨‹åˆ—è¡¨</a>
             &nbsp;| &nbsp;
-            <a href="logout.jsp">ÍË³öµÇÂ¼</a>
+            <a href="logout.jsp">é€€å‡ºç™»å½•</a>
             &nbsp;
           </td>
         </tr>
@@ -65,10 +67,10 @@ if ( vCourses == null )
   </tr>
   <tr>
     <td>
-      <table border=0 cellpadding=0 cellspacing=0 bgcolor="#ffffff" width=700>
+      <table>
         <tr>
           <td>
-            <br>&nbsp;&nbsp;Äã¿ÉÒÔÑ¡ÔñµÄ¿Î³ÌÁĞ±íÈçÏÂ£¨<font color=#cccccc>»ÒÉ«</font>°´Å¥´ú±íÑ¡¿ÎÈËÊıÒÑÂú£©£º
+            <br>&nbsp;&nbsp;ä½ å¯ä»¥é€‰æ‹©çš„è¯¾ç¨‹åˆ—è¡¨å¦‚ä¸‹ï¼š
           </td>
         </tr>
         <tr>
@@ -77,32 +79,18 @@ if ( vCourses == null )
         </tr>
         <tr>
           <td align=center height=300 valign=top>
-            <table border=0 cellpadding=0 cellspacing=2 bgcolor="#ffffff" width=680>
-              <tr bgcolor=#cccccc height=18>
-                <td width=50 align=center>
-                  ¿Î³Ì±àºÅ
-                </td>
-                <td width=250 align=center>
-                  ¿Î³ÌÃû³Æ
-                </td>
-                <td width=50 align=center>
-                  ÊÚ¿ÎÀÏÊ¦
-                </td>
-                <td width=40 align=center>
-                  Ñ§·Ö
-                </td>
-                <td width=150 align=center>
-                  ÉÏ¿ÎÊ±¼ä
-                </td>
-                <td width=40 align=center>
-                  ²Ù×÷
-                </td>
-                <td width=50 align=center>
-                  ÏŞÖÆÈËÊı
-                </td>
-                <td width=50 align=center>
-                  ÒÑÑ¡ÈËÊı
-                </td>
+            <table class="table table-hover table-bordered table-sort table-sort-search" border=0 cellpadding=0 cellspacing=2 bgcolor="#ffffff"><!-- width=680 -->
+              <thead bgcolor=#CCCCFF height=18>
+                <th class="table-sort">è¯¾ç¨‹ç¼–å·</th>
+                <th class="table-sort">è¯¾ç¨‹åç§°</th>
+                <th class="table-sort">æˆè¯¾è€å¸ˆ</th>
+                <th class="table-sort">å­¦åˆ†</th>
+                <th class="table-sort">ä¸Šè¯¾æ—¶é—´</th>
+                <th class="table-sort">æ“ä½œ</th>
+                <th class="table-sort">é™åˆ¶äººæ•°</th>
+                <th class="table-sort">å·²é€‰äººæ•°</th>
+              </thead>
+              <tbody>
 <%
 for ( int i=0; i<vCourses.size(); i++ )
 {
@@ -126,17 +114,17 @@ for ( int i=0; i<vCourses.size(); i++ )
                 </td>
                 <td align=center>
 <%
-//Èç¹ûÑ¡¿ÎÈËÊı´óÓÚÏŞÖÆÈËÊı£¬²»ÄÜÔÙÑ¡ÁË
+//å¦‚æœé€‰è¯¾äººæ•°å¤§äºé™åˆ¶äººæ•°ï¼Œä¸èƒ½å†é€‰äº†
 if ( course.getLimited() <= course.getAmount() )
 {
 %>
-                  <button disabled>Ñ¡¿Î</button>
+                  <button class='btn btn-warning btn-xs' disabled><span class="glyphicon glyphicon-lock"></span>&nbsp;å·²æ»¡</button>
 <%
 }
 else
 {
 %>
-                  <button onclick="choose('<%=course.getCourseId()%>')">Ñ¡¿Î</button>
+                  <button class="btn btn-success btn-xs" onclick="choose('<%=course.getCourseId()%>')"><span class="glyphicon glyphicon-ok"></span>&nbsp;é€‰è¯¾</button>
 <%
 }
 %>
@@ -151,6 +139,7 @@ else
 <%
 }
 %>
+              </tbody>
             </table>
           </td>
         </tr>
@@ -163,5 +152,15 @@ else
 </table>
 <input type="hidden" name="courseId" value="">
 </form>
+</div>
+<script type="text/javascript" src="common/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="common/tablesort.js"></script>
+<script type="text/javascript">
+            // For Demo Purposes
+            $(function () {
+                $('table.table-sort').tablesort();
+                hljs.initHighlightingOnLoad(); // Syntax Hilighting
+            });
+</script>
 </body>
 </html>

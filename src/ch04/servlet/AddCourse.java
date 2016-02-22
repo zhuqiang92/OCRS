@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This product includes software developed by the
  * Apache Software Foundation (http://www.apache.org/).
  */
@@ -15,7 +15,7 @@ import ch04.*;
 
 /**
  * 针对教师添加课程页面的Servlet
- * @author ShenYK
+ * @author ZhuQiang
  * @version 1.0
  */
 public class AddCourse extends Common
@@ -25,7 +25,7 @@ public class AddCourse extends Common
         throws ServletException, IOException
     {
         //设置提交表单的中文编码
-        request.setCharacterEncoding("GBK");
+        request.setCharacterEncoding("utf-8");
         HttpSession mySession = request.getSession(true);
         
         //清空错误消息

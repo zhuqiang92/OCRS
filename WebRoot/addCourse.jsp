@@ -1,4 +1,4 @@
-<%@page contentType="text/html;charset=gbk" %>
+<%@page contentType="text/html;charset=utf-8" %>
 <%@page language="java" import="java.util.*" %>
 <%@page language="java" import="ch04.*" %>
 <%@ include file="inc/cmnAuthenticate.jsp" %>
@@ -8,7 +8,7 @@ if ( course == null )
 {
     course = new Course();
 }
-//ÏÔÊ¾Ñ§·ÖºÍÈËÊıµÄµØ·½
+//æ˜¾ç¤ºå­¦åˆ†å’Œäººæ•°çš„åœ°æ–¹
 String sPoint = "";
 String sLimited = "";
 if ( course.getPoint() != 0 )
@@ -22,13 +22,13 @@ if ( course.getLimited() != 0 )
 %>
 <html>
 <head>
-  <title>Ìí¼Ó¿Î³Ì</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-  <script language="JAVASCRIPT" src="common/cmnScript.js"></script>
-  <script language="JAVASCRIPT" src="addCourse.js"></script>
-  <link rel="stylesheet" type="text/css" href="common\cmnStyle.css" TITLE="common"></link>
+    <title>æ·»åŠ è¯¾ç¨‹</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script language="JAVASCRIPT" src="common/cmnScript.js"></script>
+    <script language="JAVASCRIPT" src="addCourse.js"></script>
+    <link rel="stylesheet" href="common/css/bootstrap.min.css" type="text/css"></link>
+    <script language="JAVASCRIPT">
 
-  <script language="JAVASCRIPT">
 <%
     if ( session.getAttribute("errMsg") != null )
     {
@@ -43,94 +43,52 @@ if ( course.getLimited() != 0 )
 <%
     }
 %>
-  </script>
+    </script>
 </head>
 
 <body>
-<table border=0 cellpadding=0 cellspacing=0 height=10>
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-  </tr>
-</table>
-<form name="form_main" action="servlet/AddCourse" method="post" 
-      onsubmit="return checkInput();" onreset="resetForm()">
-<table border=0 cellpadding=0 cellspacing=2 bgcolor="#000000" align=center>
-  <tr>
-    <td>
-      <table border=0 cellpadding=0 cellspacing=0 bgcolor="#ffffff" width=700>
-        <tr>
-          <td align=left height=20>
-            »¶Ó­Äã£¬<font color=blue><%=session.getAttribute("realname")%></font>£¡
-          </td>
-          <td align=right>
-            <a href="servlet/CourseList">¿Î³ÌÇé¿öÒ»ÀÀ</a>
-            &nbsp;| &nbsp;
-            <a href="logout.jsp">ÍË³öµÇÂ¼</a>
-            &nbsp;
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <table border=0 cellpadding=0 cellspacing=0 bgcolor="#ffffff" width=700>
-        <tr>
-          <td>
-            <br>&nbsp;&nbsp;ÇëÊäÈëĞÂ¿Î³ÌÏêÏ¸ĞÅÏ¢£¬²¢µã»÷µÇÂ¼°´Å¥£º
-          </td>
-        </tr>
-        <tr>
-          <td height=5>
-          </td>
-        </tr>
-        <tr>
-          <td align=center valign=top>
-            <table border=0 cellpadding=1 cellspacing=1 bgcolor="#000000" width=680>
-              <tr>
-                <td width=80 class="td_label" align="center" valign="center">
-                  ¿Î³Ì±àºÅ
-                </td> 
-                <td width=600 class="td_content" align="left" valign="center">
-                  <input name="courseId" type="text" size="6" maxlength="6" value="<%=course.getCourseId()%>">
-                </td>
-              </tr>
-              <tr>
-                <td width=80 class="td_label" align="center" valign="center">
-                  ¿Î³ÌÃû³Æ
-                </td> 
-                <td width=600 class="td_content" align="left" valign="center">
-                  <input name="courseName" type="text" size="40" maxlength="20" value="<%=course.getCourseName()%>">
-                </td>
-              </tr>
-              <tr>
-                <td width=80 class="td_label" align="center" valign="center">
-                  ½ÌÊ¦ĞÕÃû
-                </td> 
-                <td width=600 class="td_content" align="left" valign="center">
-                  <input name="teacher" type="text" size="20" maxlength="20" value="<%=course.getTeacher()%>">
-                </td>
-              </tr>
-              <tr>
-                <td width=80 class="td_label" align="center" valign="center">
-                  Ñ§·Ö
-                </td> 
-                <td width=600 class="td_content" align="left" valign="center">
-                  <input name="point" type="text" size="1" maxlength="1" value="<%=sPoint%>">
-                  £¨1¡«6£©
-                </td>
-              </tr>
-              <tr>
-                <td class="td_label" align="center" valign="center" rowspan=2 height=40>
-                  ÉÏ¿ÎÊ±¼ä
-                </td> 
-                <td class="td_content" align="left" valign="top">
-                  µÚÒ»´Î£º&nbsp;<span class="sel_span">
-                    <div class="sel_div">
-                      <select name="time1D" class="sel">
-                        <option value="1"
+    <div class="container">
+        <div class="row col-lg-offset-2">
+            <div class="row">
+                <h3 class="col-lg-8">æ¬¢è¿ä½ ï¼Œ<font color=blue><%=session.getAttribute("realname")%></font>ï¼</h3>
+                <div class="col-lg-4">
+                    <a href="servlet/CourseList">è¯¾ç¨‹æƒ…å†µä¸€è§ˆ</a> &nbsp;| &nbsp;
+                    <a href="logout.jsp">é€€å‡ºç™»å½•</a> &nbsp;
+                </div>
+            </div>
+            <h4>è¯·è¾“å…¥æ–°è¯¾ç¨‹è¯¦ç»†ä¿¡æ¯ï¼Œå¹¶ç‚¹å‡»æ·»åŠ æŒ‰é’®ï¼š</h4>
+        </div>
+        <div class="row col-lg-6 col-lg-offset-3 form-group">
+            <form class="form-horizontal" name="form_main" action="servlet/AddCourse" method="post" onsubmit="return checkInput();" onreset="resetForm()">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">è¯¾ç¨‹ç¼–å·</label>
+                    <div class="col-sm-10">
+                        <input name="courseId" type="text" size="6" maxlength="6" value="<%=course.getCourseId()%>" class="form-control" placeholder="è¯·è¾“å…¥6ä½ç¼–å·">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">è¯¾ç¨‹åç§°</label>
+                    <div class="col-sm-10">
+                        <input name="courseName" type="text" size="40" maxlength="20" value="<%=course.getCourseName()%>" class="form-control" placeholder="è¯·è¾“å…¥è¯¾ç¨‹åç§°">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">æ•™å¸ˆå§“å</label>
+                    <div class="col-sm-10">
+                        <input name="teacher" type="text" size="20" maxlength="20" value="<%=course.getTeacher()%>" class="form-control" placeholder="è¯·è¾“å…¥æ•™å¸ˆå§“å">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">è¯¾ç¨‹å­¦åˆ†</label>
+                    <div class="col-sm-10">
+                        <input name="point" type="text" size="1" maxlength="1" value="<%=sPoint%>" class="form-control" placeholder="è¯·è¾“å…¥è¯¾ç¨‹å­¦åˆ†ï¼ˆ1ï½6ï¼‰">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">ç¬¬ä¸€æ¬¡</label>
+                    <div class="col-sm-3">
+                        <select name="time1D" class="form-control">
+                            <option value="1"
 <%
 if ( course.getTime1().length() > 1 && course.getTime1().substring( 0, 1 ).equals("1") )
 {
@@ -139,7 +97,7 @@ if ( course.getTime1().length() > 1 && course.getTime1().substring( 0, 1 ).equal
 <%
 }
 %>
-                        >ĞÇÆÚÒ»</option>
+                        >æ˜ŸæœŸä¸€</option>
                         <option value="2"
 <%
 if ( course.getTime1().length() > 1 && course.getTime1().substring( 0, 1 ).equals("2") )
@@ -149,7 +107,7 @@ if ( course.getTime1().length() > 1 && course.getTime1().substring( 0, 1 ).equal
 <%
 }
 %>
-                        >ĞÇÆÚ¶ş</option>
+                        >æ˜ŸæœŸäºŒ</option>
                         <option value="3"
 <%
 if ( course.getTime1().length() > 1 && course.getTime1().substring( 0, 1 ).equals("3") )
@@ -159,7 +117,7 @@ if ( course.getTime1().length() > 1 && course.getTime1().substring( 0, 1 ).equal
 <%
 }
 %>
-                        >ĞÇÆÚÈı</option>
+                        >æ˜ŸæœŸä¸‰</option>
                         <option value="4"
 <%
 if ( course.getTime1().length() > 1 && course.getTime1().substring( 0, 1 ).equals("4") )
@@ -169,7 +127,7 @@ if ( course.getTime1().length() > 1 && course.getTime1().substring( 0, 1 ).equal
 <%
 }
 %>
-                        >ĞÇÆÚËÄ</option>
+                        >æ˜ŸæœŸå››</option>
                         <option value="5"
 <%
 if ( course.getTime1().length() > 1 && course.getTime1().substring( 0, 1 ).equals("5") )
@@ -179,14 +137,11 @@ if ( course.getTime1().length() > 1 && course.getTime1().substring( 0, 1 ).equal
 <%
 }
 %>
-                        >ĞÇÆÚÎå</option>
+                        >æ˜ŸæœŸäº”</option>
                       </select>
-                    </div>
-                  </span>
-                  &nbsp;
-                  <span class="sel_span">
-                    <div class="sel_div">
-                      <select name="time1T" class="sel">
+                       </div>
+                    <div class="col-sm-4">
+                      <select name="time1T" class="form-control">
                         <option value="1"
 <%
 if ( course.getTime1().length() > 1 && course.getTime1().substring( 1, 2 ).equals("1") )
@@ -196,7 +151,7 @@ if ( course.getTime1().length() > 1 && course.getTime1().substring( 1, 2 ).equal
 <%
 }
 %>
-                        >08:00¡«10:00</option>
+                        >08:00ï½10:00</option>
                         <option value="2"
 <%
 if ( course.getTime1().length() > 1 && course.getTime1().substring( 1, 2 ).equals("2") )
@@ -206,7 +161,7 @@ if ( course.getTime1().length() > 1 && course.getTime1().substring( 1, 2 ).equal
 <%
 }
 %>
-                        >10:00¡«12:00</option>
+                        >10:00ï½12:00</option>
                         <option value="3"
 <%
 if ( course.getTime1().length() > 1 && course.getTime1().substring( 1, 2 ).equals("3") )
@@ -216,7 +171,7 @@ if ( course.getTime1().length() > 1 && course.getTime1().substring( 1, 2 ).equal
 <%
 }
 %>
-                        >14:00¡«16:00</option>
+                        >14:00ï½16:00</option>
                         <option value="4"
 <%
 if ( course.getTime1().length() > 1 && course.getTime1().substring( 1, 2 ).equals("4") )
@@ -226,7 +181,7 @@ if ( course.getTime1().length() > 1 && course.getTime1().substring( 1, 2 ).equal
 <%
 }
 %>
-                        >16:00¡«18:00</option>
+                        >16:00ï½18:00</option>
                         <option value="5"
 <%
 if ( course.getTime1().length() > 1 && course.getTime1().substring( 1, 2 ).equals("5") )
@@ -236,18 +191,15 @@ if ( course.getTime1().length() > 1 && course.getTime1().substring( 1, 2 ).equal
 <%
 }
 %>
-                        >19:00¡«21:00</option>
+                        >19:00ï½21:00</option>
                       </select>
                     </div>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td class="td_content" align="left" valign="top">
-                  µÚ¶ş´Î£º&nbsp;<span class="sel_span">
-                    <div class="sel_div">
-                      <select name="time2D" class="sel">
-                        <option value="1"
+                    </div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">ç¬¬äºŒæ¬¡</label>
+                    <div class="col-sm-3">
+                      	<select name="time2D" class="form-control">
+                        	<option value="1"
 <%
 if ( course.getTime2().length() > 1 && course.getTime2().substring( 0, 1 ).equals("1") )
 {
@@ -256,7 +208,7 @@ if ( course.getTime2().length() > 1 && course.getTime2().substring( 0, 1 ).equal
 <%
 }
 %>
-                        >ĞÇÆÚÒ»</option>
+                        >æ˜ŸæœŸä¸€</option>
                         <option value="2"
 <%
 if ( course.getTime2().length() > 1 && course.getTime2().substring( 0, 1 ).equals("2") )
@@ -266,7 +218,7 @@ if ( course.getTime2().length() > 1 && course.getTime2().substring( 0, 1 ).equal
 <%
 }
 %>
-                        >ĞÇÆÚ¶ş</option>
+                        >æ˜ŸæœŸäºŒ</option>
                         <option value="3"
 <%
 if ( course.getTime2().length() > 1 && course.getTime2().substring( 0, 1 ).equals("3") )
@@ -276,7 +228,7 @@ if ( course.getTime2().length() > 1 && course.getTime2().substring( 0, 1 ).equal
 <%
 }
 %>
-                        >ĞÇÆÚÈı</option>
+                        >æ˜ŸæœŸä¸‰</option>
                         <option value="4"
 <%
 if ( course.getTime2().length() > 1 && course.getTime2().substring( 0, 1 ).equals("4") )
@@ -286,7 +238,7 @@ if ( course.getTime2().length() > 1 && course.getTime2().substring( 0, 1 ).equal
 <%
 }
 %>
-                        >ĞÇÆÚËÄ</option>
+                        >æ˜ŸæœŸå››</option>
                         <option value="5"
 <%
 if ( course.getTime2().length() > 1 && course.getTime2().substring( 0, 1 ).equals("5") )
@@ -296,14 +248,12 @@ if ( course.getTime2().length() > 1 && course.getTime2().substring( 0, 1 ).equal
 <%
 }
 %>
-                        >ĞÇÆÚÎå</option>
+                        >æ˜ŸæœŸäº”</option>
                       </select>
                     </div>
-                  </span>
-                  &nbsp;
-                  <span class="sel_span">
-                    <div class="sel_div">
-                      <select name="time2T" class="sel">
+
+                    <div class="col-sm-4">
+                      <select name="time2T" class="form-control">
                         <option value="1"
 <%
 if ( course.getTime2().length() > 1 && course.getTime2().substring( 1, 2 ).equals("1") )
@@ -313,7 +263,7 @@ if ( course.getTime2().length() > 1 && course.getTime2().substring( 1, 2 ).equal
 <%
 }
 %>
-                        >08:00¡«10:00</option>
+                        >08:00ï½10:00</option>
                         <option value="2"
 <%
 if ( course.getTime2().length() > 1 && course.getTime2().substring( 1, 2 ).equals("2") )
@@ -323,7 +273,7 @@ if ( course.getTime2().length() > 1 && course.getTime2().substring( 1, 2 ).equal
 <%
 }
 %>
-                        >10:00¡«12:00</option>
+                        >10:00ï½12:00</option>
                         <option value="3"
 <%
 if ( course.getTime2().length() > 1 && course.getTime2().substring( 1, 2 ).equals("3") )
@@ -333,7 +283,7 @@ if ( course.getTime2().length() > 1 && course.getTime2().substring( 1, 2 ).equal
 <%
 }
 %>
-                        >14:00¡«16:00</option>
+                        >14:00ï½16:00</option>
                         <option value="4"
 <%
 if ( course.getTime2().length() > 1 && course.getTime2().substring( 1, 2 ).equals("4") )
@@ -343,7 +293,7 @@ if ( course.getTime2().length() > 1 && course.getTime2().substring( 1, 2 ).equal
 <%
 }
 %>
-                        >16:00¡«18:00</option>
+                        >16:00ï½18:00</option>
                         <option value="5"
 <%
 if ( course.getTime2().length() > 1 && course.getTime2().substring( 1, 2 ).equals("5") )
@@ -353,36 +303,24 @@ if ( course.getTime2().length() > 1 && course.getTime2().substring( 1, 2 ).equal
 <%
 }
 %>
-                        >19:00¡«21:00</option>
+                        >19:00ï½21:00</option>
                       </select>
                     </div>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td width=80 class="td_label" align="center" valign="center">
-                  ÏŞÖÆÈËÊı
-                </td> 
-                <td width=600 class="td_content" align="left" valign="center">
-                  <input name="limited" type="text" size="3" maxlength="3" value="<%=sLimited%>">
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td height=10></td>
-        </tr>
-        <tr>
-          <td height=30 align=center>
-            <input type="submit" value="µÇÂ¼"></input>
-            <input type="reset" value="È¡Ïû"></input>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-</form>
+				</div>
+        		<div class="form-group">
+        			<label class="col-sm-2 control-label">é™åˆ¶äººæ•°</label>
+        			<div class="col-sm-10">
+            			<input class="form-control" name="limited" type="text" size="3" maxlength="3" value="<%=sLimited%>">
+        			</div>
+        		</div>
+        		<div class="form-group">
+        			<div class="col-sm-offset-2 col-sm-10">
+            			<input type="submit" value="æ·»åŠ " class="btn btn-success"></input>
+            			<input type="reset" value="å–æ¶ˆ" class="btn btn-warning"></input>
+            		</div>
+            	</div>
+           </form>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%@page contentType="text/html;charset=gbk" %>
+<%@page contentType="text/html;charset=utf-8" %>
 <%@page language="java" import="java.util.*" %>
 <%@page language="java" import="ch04.*" %>
 <%@ include file="inc/cmnAuthenticate.jsp" %>
@@ -8,16 +8,16 @@ if ( vCourses == null )
 {
     vCourses = new Vector();
 }
-//������ѧ��
+//计算总学分
 int iSumPoint = 0;
 %>
 <html>
 <head>
-  <title>ѡ�ν��һ��</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+  <title>选课结果一览</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <script language="JAVASCRIPT" src="common/cmnScript.js"></script>
   <script language="JAVASCRIPT" src="viewCourse.js"></script>
-  <link rel="stylesheet" type="text/css" href="common\cmnStyle.css" TITLE="common"></link>
+  <link rel="stylesheet" href="common/css/bootstrap.min.css" type="text/css"></link>
 
   <script language="JAVASCRIPT">
 <%
@@ -53,12 +53,12 @@ int iSumPoint = 0;
       <table border=0 cellpadding=0 cellspacing=0 bgcolor="#ffffff" width=700>
         <tr>
           <td align=left height=20>
-            ��ӭ�㣬<font color=blue><%=session.getAttribute("realname")%></font>��
+            欢迎你，<font color=blue><%=session.getAttribute("realname")%></font>！
           </td>
           <td align=right>
-            <a href="servlet/ChooseCourse">����ѡ��</a>
+            <a href="servlet/ChooseCourse">继续选课</a>
             &nbsp;| &nbsp;
-            <a href="logout.jsp">�˳���¼</a>
+            <a href="logout.jsp">退出登录</a>
             &nbsp;
           </td>
         </tr>
@@ -67,10 +67,10 @@ int iSumPoint = 0;
   </tr>
   <tr>
     <td>
-      <table border=0 cellpadding=0 cellspacing=0 bgcolor="#ffffff" width=700>
+      <table border=0 cellpadding=0 cellspacing=0 bgcolor="#ffffff"><!-- width=700 -->
         <tr>
           <td>
-            <br>&nbsp;&nbsp;���Ѿ�ѡ��Ŀγ��б����£�
+            <br>&nbsp;&nbsp;你已经选择的课程列表如下：
           </td>
         </tr>
         <tr>
@@ -79,30 +79,21 @@ int iSumPoint = 0;
         </tr>
         <tr>
           <td align=center height=300 valign=top>
-            <table border=0 cellpadding=0 cellspacing=2 bgcolor="#ffffff" width=680>
-              <tr bgcolor=#cccccc height=18>
-                <td width=50 align=center>
-                  �γ̱��
-                </td>
-                <td width=250 align=center>
-                  �γ�����
-                </td>
-                <td width=50 align=center>
-                  �ڿ���ʦ
-                </td>
-                <td width=40 align=center>
-                  ѧ��
-                </td>
-                <td width=290 align=center>
-                  �Ͽ�ʱ��
-                </td>
-              </tr>
-                
+            <table class="table table-hover table-bordered" border=0 cellpadding=0 cellspacing=2 bgcolor="#ffffff"><!-- width=680 -->
+              <thead bgcolor=#CCCCFF height=18>
+                <th align=center>课程编号</th>
+                <th align=center><!-- width=250  -->课程名称</th>
+                <th align=center><!-- width=50  -->授课老师</th>
+                <th align=center><!-- width=40  --> 学分</th>
+                <th align=center><!-- width=150  -->上课时间</th>
+                <th align=center><!-- width=40  --> 操作</th>
+              </thead>
+              <tbody> 
 <%
 for ( int i=0; i<vCourses.size(); i++ )
 {
     Course course = (Course)vCourses.get(i);
-    //�ۼ���ѧ��
+    //累加总学分
     iSumPoint = iSumPoint + course.getPoint();
 %>
               <tr>
@@ -119,22 +110,23 @@ for ( int i=0; i<vCourses.size(); i++ )
                   <%=course.getPoint()%>
                 </td>
                 <td align=center>
-                  <%=course.getTime1Express()%>&nbsp;&nbsp;&nbsp;<%=course.getTime2Express()%>
+                  <%=course.getTime1Express()%><br><%=course.getTime2Express()%>
+                </td>
+                <td align=center>
+                	<button class="btn btn-danger btn-xs" onclick="delete('<%=course.getCourseId()%>')"><span class="glyphicon glyphicon-remove"></span>&nbsp;删除</button>
                 </td>
                 
               </tr>
 <%
 }
 %>
+              
               <tr>
-                <td height=5 colspan=5>
+                <td colspan=6>
+                  你当前选课的总学分为：<font color=blue>&nbsp;<%=iSumPoint%>&nbsp;</font>分。
                 </td>
               </tr>
-              <tr>
-                <td colspan=5>
-                  �㵱ǰѡ�ε���ѧ��Ϊ��<font color=blue>&nbsp;<%=iSumPoint%>&nbsp;</font>�֡�
-                </td>
-              </tr>
+             </tbody>
             </table>
           </td>
         </tr>
@@ -145,6 +137,7 @@ for ( int i=0; i<vCourses.size(); i++ )
     </td>
   </tr>
 </table>
+<input type="hidden" name="courseId" value=""><!-- 2016/2/20 -->
 </form>
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This product includes software developed by the
  * Apache Software Foundation (http://www.apache.org/).
  */
@@ -25,7 +25,7 @@ public class CourseList extends Common
         throws ServletException, IOException
     {
         //设置提交表单的中文编码
-        request.setCharacterEncoding("GBK");
+        request.setCharacterEncoding("utf-8");
         HttpSession mySession = request.getSession(true);
         
         //清空错误消息

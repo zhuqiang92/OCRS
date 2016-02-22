@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This product includes software developed by the
  * Apache Software Foundation (http://www.apache.org/).
  */
@@ -15,7 +15,7 @@ import ch04.*;
 
 /**
  * 针对学生选课登录页面的Servlet
- * @author ShenYK
+ * @author ZhuQiang
  * @version 1.0
  */
 public class ChooseCourse extends Common
@@ -25,7 +25,7 @@ public class ChooseCourse extends Common
         throws ServletException, IOException
     {
         //设置提交表单的中文编码
-        request.setCharacterEncoding("GBK");
+        request.setCharacterEncoding("utf-8");
         HttpSession mySession = request.getSession(true);
         
         //清空错误消息
@@ -51,7 +51,8 @@ public class ChooseCourse extends Common
             //如果选课成功，则跳转到选课结果一览页面
             if ( bChoose )
             {
-                response.sendRedirect("../servlet/ViewCourse");
+                response.sendRedirect("../viewCourse.jsp");//This is also OK!!
+                //response.sendRedirect("../servlet/ViewCourse");
                 return;
             }
             else
@@ -147,6 +148,8 @@ public class ChooseCourse extends Common
         {
             stmt = conn.createStatement();
             //执行SQL语句
+            //格式：IF(Condition,A,B)
+            //意义：当Condition为TRUE时，返回A；当Condition为FALSE时，返回B。
             String sQuery = "select course.limited,IF(elective.course_id, count(*), 0) as amount "
                           + "from course left join elective "
                           + "on course.course_id = elective.course_id "

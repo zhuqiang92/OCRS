@@ -1,4 +1,4 @@
-<%@page contentType="text/html;charset=gbk" %>
+<%@page contentType="text/html;charset=utf-8" %>
 <%@page language="java" import="java.util.*" %>
 <%@page language="java" import="ch04.*" %>
 <%
@@ -18,10 +18,10 @@ if ( sRole == null )
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>请登录选课系统</title>
+  <title>璇风櫥褰曢�夎绯荤粺</title>
   <script language="JAVASCRIPT" src="common/cmnScript.js"></script>
   <script language="JAVASCRIPT" src="login.js"></script>
-  <link rel="stylesheet" type="text/css" href="common/bootstrap.min.css" TITLE="common"></link>
+  <link rel="stylesheet" href="common/css/bootstrap.min.css" type="text/css"></link>
   <style type="text/css">
     .form-login{
       max-width: 330px;
@@ -51,13 +51,12 @@ if ( sRole == null )
 </head>
 
 <body>
-<div class="container">
-  <form class="form-login" name="form_main" action="servlet/Login" method="post" 
+<form class="form-login" name="form_main" action="servlet/Login" method="post" 
       onsubmit="return checkInput();" onreset="resetForm()">
-<h3>请登录选课系统</h3>
-  <input type="text" class="form-control" name="username" placeholder="学号或用户名" value="<%=sUsername%>" required autofocus></input>
+<h3>璇风櫥褰曢�夎绯荤粺</h3>
+  <input type="text" class="form-control" name="username" placeholder="瀛﹀彿鎴栫敤鎴峰悕" value="<%=sUsername%>" required autofocus></input>
             
-  <input type="password" class="form-control" name="password" placeholder="密码" required></input>
+  <input type="password" class="form-control" name="password" placeholder="瀵嗙爜" required></input>
 
 
      
@@ -70,7 +69,7 @@ if( sRole.equals("0") )
 <%
 }
 %>
-          >学生 &nbsp;
+          >瀛︾敓 &nbsp;
   <input type="radio" name="role" value="1" style="border-width: 0px;"
 <%
 if( sRole.equals("1") )
@@ -80,9 +79,9 @@ if( sRole.equals("1") )
 <%
 }
 %>
-          >教师
+          >鏁欏笀
           
-  <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">鐧诲綍</button>
 </form>
 </div>
 </body>

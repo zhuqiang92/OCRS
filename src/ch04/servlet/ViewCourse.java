@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This product includes software developed by the
  * Apache Software Foundation (http://www.apache.org/).
  */
@@ -15,7 +15,7 @@ import ch04.*;
 
 /**
  * 针对学生选课登录结果页面的Servlet
- * @author ShenYK
+ * @author ZhuQiang
  * @version 1.0
  */
 public class ViewCourse extends Common
@@ -25,15 +25,21 @@ public class ViewCourse extends Common
         throws ServletException, IOException
     {
         //设置提交表单的中文编码
-        request.setCharacterEncoding("GBK");
+        request.setCharacterEncoding("utf-8");
         HttpSession mySession = request.getSession(true);
         
         //清空错误消息
         mySession.setAttribute("errMsg","");
         
+        //2016/2/20获取表单变量
+        String sCourseId = request.getParameter("courseId");
+        
         //选出所有备选的课程
         String sUsername = (String)mySession.getAttribute( "username" );
         Vector allCourses = getAllSelectedCourse( sUsername );
+        /*2016/2/22
+        deleteCourse(sCourseId);
+        */
         mySession.setAttribute( "courses", allCourses );
         response.sendRedirect("../viewCourse.jsp");
         return;
@@ -100,5 +106,33 @@ public class ViewCourse extends Common
             }
         }
     }
-
+    
+    //2016/2/20删除某一已选课程
+    private void deleteCourse(String courseId){
+        //获得数据库连接
+        Connection conn = this.getDBConnection();
+       
+        Statement stmt = null;
+        ResultSet rs = null;
+        
+        try {
+        	stmt = conn.createStatement();
+        	//尝试进行删除
+            String sqlDelete = "delete from elective where course_id="+courseId;
+			stmt.executeUpdate( sqlDelete );
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+        finally
+        {
+            try
+            {
+                rs.close();
+                stmt.close();
+                conn.close();
+            }catch(Exception ex)
+            {
+            }
+        }
+    }
 }
