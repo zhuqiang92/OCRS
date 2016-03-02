@@ -51,8 +51,8 @@ public class ChooseCourse extends Common
             //如果选课成功，则跳转到选课结果一览页面
             if ( bChoose )
             {
-                response.sendRedirect("../viewCourse.jsp");//This is also OK!!
-                //response.sendRedirect("../servlet/ViewCourse");
+                //response.sendRedirect("../viewCourse.jsp");//This is also OK!!
+                response.sendRedirect("../servlet/ViewCourse");
                 return;
             }
             else
@@ -89,6 +89,8 @@ public class ChooseCourse extends Common
         {
             stmt = conn.createStatement();
             //执行SQL语句
+            //格式：IF(Condition,A,B)
+            //意义：当Condition为TRUE时，返回A；当Condition为FALSE时，返回B。
             String sQuery = "select course.*,IF(elective.course_id, count(*), 0) as amount "
                           + "from course left join elective "
                           + "on course.course_id = elective.course_id "
@@ -107,6 +109,7 @@ public class ChooseCourse extends Common
                 course.setPoint( rs.getInt( "point" ) );
                 course.setTime1( rs.getString( "time_1" ) );
                 course.setTime2( rs.getString( "time_2" ) );
+                course.setClassroom( rs.getString( "classroom" ) );
                 course.setLimited( rs.getInt( "limited" ) );
                 course.setAmount( rs.getInt( "amount" ) );
                 

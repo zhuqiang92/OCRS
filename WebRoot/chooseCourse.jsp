@@ -12,10 +12,14 @@ if ( vCourses == null )
 <html>
 <head>
   <title>在线选课</title>
+  <link rel="shortcut icon" href="img/smlogo.png">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <script language="JAVASCRIPT" src="common/cmnScript.js"></script>
   <script language="JAVASCRIPT" src="chooseCourse.js"></script>
   <link rel="stylesheet" href="common/css/bootstrap.min.css" type="text/css"></link>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script> 
  
   <script language="JAVASCRIPT">
 <%
@@ -86,6 +90,7 @@ if ( vCourses == null )
                 <th class="table-sort">授课老师</th>
                 <th class="table-sort">学分</th>
                 <th class="table-sort">上课时间</th>
+                <th class="table-sort">上课地点</th>
                 <th class="table-sort">操作</th>
                 <th class="table-sort">限制人数</th>
                 <th class="table-sort">已选人数</th>
@@ -111,6 +116,9 @@ for ( int i=0; i<vCourses.size(); i++ )
                 </td>
                 <td align=center>
                   <%=course.getTime1Express()%><br><%=course.getTime2Express()%>
+                </td>
+                <td align=center>
+                  <%=course.getClassroom()%>
                 </td>
                 <td align=center>
 <%

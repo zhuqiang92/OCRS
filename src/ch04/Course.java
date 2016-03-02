@@ -1,4 +1,4 @@
-﻿package ch04;
+package ch04;
 
 //针对课程的bean类
 public class Course 
@@ -9,6 +9,7 @@ public class Course
     private int    point        = 0;     //学分
     private String time1        = "";    //第一节课时间
     private String time2        = "";    //第二节课时间
+    private String classroom	= "";    //上课地点
     private String time1Express = "";    //第一节课时间表达式
     private String time2Express = "";    //第二节课时间表达式
     private int    limited      = 0;     //选课人数
@@ -66,6 +67,12 @@ public class Course
         this.time1 = time1;
         this.time1Express = getExpress( time1 );
     }
+	public String getClassroom() {
+		return classroom;
+	}
+	public void setClassroom(String classroom) {
+		this.classroom = classroom;
+	}
     public String getTime1Express()
     {
         return time1Express;

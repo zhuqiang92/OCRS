@@ -31,18 +31,38 @@ public class ViewCourse extends Common
         //清空错误消息
         mySession.setAttribute("errMsg","");
         
-        //2016/2/20获取表单变量
-        String sCourseId = request.getParameter("courseId");
-        
-        //选出所有备选的课程
         String sUsername = (String)mySession.getAttribute( "username" );
-        Vector allCourses = getAllSelectedCourse( sUsername );
-        /*2016/2/22
-        deleteCourse(sCourseId);
-        */
-        mySession.setAttribute( "courses", allCourses );
-        response.sendRedirect("../viewCourse.jsp");
-        return;
+        
+        //是否进入默认页面
+        if ( !request.getParameterNames().hasMoreElements() )
+        {
+            //如果是默认进入页面，则选出所有备选的课程
+            Vector allCourses = getAllSelectedCourse( sUsername );
+            mySession.setAttribute( "courses", allCourses );
+            response.sendRedirect("../viewCourse.jsp");
+            return;
+        }
+        else
+        {
+            //获取表单变量
+            String sDeletedId = request.getParameter("deletedId");
+            //尝试进行删除
+            boolean bDelete = deleteCourse(sUsername, sDeletedId);
+            //如果删除成功，则跳转到选课结果一览页面
+            if ( bDelete )
+            {
+                //response.sendRedirect("../viewCourse.jsp");//This is also OK!!
+                response.sendRedirect("../servlet/ViewCourse");
+                return;
+            }
+            else
+            {
+            	Vector allCourses = getAllSelectedCourse( sUsername );
+                mySession.setAttribute( "courses", allCourses );
+                response.sendRedirect("../viewCourse.jsp");
+                return;
+            }
+        }
     }
     
     public void doPost ( HttpServletRequest request, 
@@ -84,6 +104,7 @@ public class ViewCourse extends Common
                 course.setPoint( rs.getInt( "point" ) );
                 course.setTime1( rs.getString( "time_1" ) );
                 course.setTime2( rs.getString( "time_2" ) );
+                course.setClassroom( rs.getString( "classroom" ) );
                 
                 courses.add(course);
             }
@@ -107,27 +128,31 @@ public class ViewCourse extends Common
         }
     }
     
-    //2016/2/20删除某一已选课程
-    private void deleteCourse(String courseId){
+    //2016/2/20删除某一已选课程 
+    private boolean deleteCourse(String username, String courseId){
         //获得数据库连接
         Connection conn = this.getDBConnection();
        
         Statement stmt = null;
-        ResultSet rs = null;
+        //ResultSet rs = null;
         
         try {
         	stmt = conn.createStatement();
         	//尝试进行删除
-            String sqlDelete = "delete from elective where course_id="+courseId;
+        	System.out.println("delete from elective where username = " + username + " and course_id = " + courseId);
+            //String sqlDelete = "delete from elective where course_id = " + courseId;
+        	String sqlDelete = "delete from elective where username = '" + username + "' and course_id = '" + courseId+"'";
 			stmt.executeUpdate( sqlDelete );
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+        	return false;
 		}
         finally
         {
             try
             {
-                rs.close();
+                //rs.close();
                 stmt.close();
                 conn.close();
             }catch(Exception ex)

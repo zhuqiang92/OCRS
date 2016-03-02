@@ -19,6 +19,7 @@ if ( sRole == null )
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>请登录选课系统</title>
+  <link rel="shortcut icon" href="img/smlogo.png">
   <script language="JAVASCRIPT" src="common/cmnScript.js"></script>
   <script language="JAVASCRIPT" src="login.js"></script>
   <link rel="stylesheet" href="common/css/bootstrap.min.css" type="text/css"></link>
@@ -51,6 +52,7 @@ if ( sRole == null )
 </head>
 
 <body>
+<img src="img/index_logo.gif"></img>
 <form class="form-login" name="form_main" action="servlet/Login" method="post" 
       onsubmit="return checkInput();" onreset="resetForm()">
 <h3>请登录选课系统</h3>
@@ -81,7 +83,7 @@ if( sRole.equals("1") )
 %>
           >教师
           
-  <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
 </form>
 </div>
 </body>

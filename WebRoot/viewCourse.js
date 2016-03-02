@@ -8,8 +8,8 @@ function windowLoad()
 }
 
 //2016/2/20 删除所选课程
-function mydelete( varCourseId )
+function myDelete( varDeletedId )
 {
-    form_main.courseId.value = varCourseId;
+    form_main.deletedId.value = varDeletedId;
     form_main.submit();
 }

@@ -12,6 +12,7 @@ if ( vCourses == null )
 <html>
 <head>
   <title>选课情况一览</title>
+  <link rel="shortcut icon" href="img/smlogo.png">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <script language="JAVASCRIPT" src="common/cmnScript.js"></script>
   <script language="JAVASCRIPT" src="courseList.js"></script>
@@ -80,12 +81,13 @@ if ( vCourses == null )
              <table class="table table-hover table-bordered" border=0 cellpadding=0 cellspacing=2 bgcolor="#ffffff"><!-- width=680 -->
               <thead bgcolor=#CCCCFF height=18>
                 <th align=center>课程编号</th>
-                <th align=center><!-- width=250  -->课程名称</th>
-                <th align=center><!-- width=50  -->授课老师</th>
-                <th align=center><!-- width=40  --> 学分</th>
-                <th align=center><!-- width=150  -->上课时间</th>
-                <th align=center><!-- width=50  -->限制人数</th>
-                <th align=center><!-- width=50  -->已选人数</th>
+                <th align=center>课程名称</th>
+                <th align=center>授课老师</th>
+                <th align=center>学分</th>
+                <th align=center>上课时间</th>
+                <th align=center>上课地点</th>
+                <th align=center>限制人数</th>
+                <th align=center>已选人数</th>
               </thead>
               <tbody>
 <%
@@ -108,6 +110,9 @@ for ( int i=0; i<vCourses.size(); i++ )
                 </td>
                 <td align=center>
                   <%=course.getTime1Express()%><br><%=course.getTime2Express()%>
+                </td>
+                <td align=center>
+                  <%=course.getClassroom()%>
                 </td>
                 <td align=center>
                   <%=course.getLimited()%>

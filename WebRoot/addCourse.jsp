@@ -23,6 +23,7 @@ if ( course.getLimited() != 0 )
 <html>
 <head>
     <title>添加课程</title>
+    <link rel="shortcut icon" href="img/smlogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script language="JAVASCRIPT" src="common/cmnScript.js"></script>
     <script language="JAVASCRIPT" src="addCourse.js"></script>
@@ -307,6 +308,12 @@ if ( course.getTime2().length() > 1 && course.getTime2().substring( 1, 2 ).equal
                       </select>
                     </div>
 				</div>
+        		<div class="form-group">
+        			<label class="col-sm-2 control-label">上课地点</label>
+        			<div class="col-sm-10">
+            			<input class="form-control" name="classroom" type="text" size="20" maxlength="20" value="<%=sLimited%>">
+        			</div>
+        		</div>
         		<div class="form-group">
         			<label class="col-sm-2 control-label">限制人数</label>
         			<div class="col-sm-10">

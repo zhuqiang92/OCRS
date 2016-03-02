@@ -14,11 +14,11 @@ int iSumPoint = 0;
 <html>
 <head>
   <title>选课结果一览</title>
+  <link rel="shortcut icon" href="img/smlogo.png">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <script language="JAVASCRIPT" src="common/cmnScript.js"></script>
   <script language="JAVASCRIPT" src="viewCourse.js"></script>
   <link rel="stylesheet" href="common/css/bootstrap.min.css" type="text/css"></link>
-
   <script language="JAVASCRIPT">
 <%
     if ( session.getAttribute("errMsg") != null )
@@ -36,16 +36,8 @@ int iSumPoint = 0;
 %>
   </script>
 </head>
-
 <body>
-<table border=0 cellpadding=0 cellspacing=0 height=10>
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-  </tr>
-</table>
-<form name="form_main" action="servlet/ChooseCourse" method="post" 
+<form name="form_main" action="servlet/ViewCourse" method="post" 
       onsubmit="return checkInput();" onreset="resetForm()">
 <table border=0 cellpadding=0 cellspacing=2 bgcolor="#000000" align=center>
   <tr>
@@ -82,11 +74,12 @@ int iSumPoint = 0;
             <table class="table table-hover table-bordered" border=0 cellpadding=0 cellspacing=2 bgcolor="#ffffff"><!-- width=680 -->
               <thead bgcolor=#CCCCFF height=18>
                 <th align=center>课程编号</th>
-                <th align=center><!-- width=250  -->课程名称</th>
-                <th align=center><!-- width=50  -->授课老师</th>
-                <th align=center><!-- width=40  --> 学分</th>
-                <th align=center><!-- width=150  -->上课时间</th>
-                <th align=center><!-- width=40  --> 操作</th>
+                <th align=center>课程名称</th>
+                <th align=center>授课老师</th>
+                <th align=center>学分</th>
+                <th align=center>上课时间</th>
+                <th align=center>上课地点</th>
+                <th align=center>操作</th>
               </thead>
               <tbody> 
 <%
@@ -113,7 +106,10 @@ for ( int i=0; i<vCourses.size(); i++ )
                   <%=course.getTime1Express()%><br><%=course.getTime2Express()%>
                 </td>
                 <td align=center>
-                	<button class="btn btn-danger btn-xs" onclick="delete('<%=course.getCourseId()%>')"><span class="glyphicon glyphicon-remove"></span>&nbsp;删除</button>
+                  <%=course.getClassroom()%>
+                </td>
+                <td align=center>
+                  <button class="btn btn-danger btn-xs" onclick="myDelete('<%=course.getCourseId()%>')"><span class="glyphicon glyphicon-remove"></span>&nbsp;删除</button>
                 </td>
                 
               </tr>
@@ -122,7 +118,7 @@ for ( int i=0; i<vCourses.size(); i++ )
 %>
               
               <tr>
-                <td colspan=6>
+                <td colspan=7>
                   你当前选课的总学分为：<font color=blue>&nbsp;<%=iSumPoint%>&nbsp;</font>分。
                 </td>
               </tr>
@@ -130,14 +126,11 @@ for ( int i=0; i<vCourses.size(); i++ )
             </table>
           </td>
         </tr>
-        <tr>
-          <td height=10></td>
-        </tr>
       </table>
     </td>
   </tr>
 </table>
-<input type="hidden" name="courseId" value=""><!-- 2016/2/20 -->
+<input type="hidden" name="deletedId" value=""><!-- 2016/2/20 -->
 </form>
 </body>
 </html>

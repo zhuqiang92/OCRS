@@ -49,6 +49,7 @@ public class AddCourse extends Common
             int iPoint = new Integer(request.getParameter("point")).intValue();
             String sTime1 = request.getParameter("time1D") + request.getParameter("time1T");
             String sTime2 = request.getParameter("time2D") + request.getParameter("time2T");
+            String sClassroom = request.getParameter("classroom");
             int iLimited = new Integer(request.getParameter("limited")).intValue();
             Course newCourse = new Course();
             newCourse.setCourseId( sCourseId );
@@ -58,6 +59,8 @@ public class AddCourse extends Common
             newCourse.setTime1( sTime1 );
             newCourse.setTime2( sTime2 );
             newCourse.setLimited( iLimited );
+            newCourse.setClassroom( sClassroom );
+            System.out.println(sClassroom);
             
             //尝试进行登录
             String sErrMsg = addCourse( newCourse );
@@ -115,7 +118,9 @@ public class AddCourse extends Common
                                 + "point=" + newCourse.getPoint() + ", "
                                 + "time_1='" + newCourse.getTime1() + "', "
                                 + "time_2='" + newCourse.getTime2() + "', "
+                                + "classroom='" + newCourse.getClassroom() + "',"
                                 + "limited=" + newCourse.getLimited() ;
+            System.out.println(newCourse.getClassroom());
             stmt.executeUpdate( sUpdateQuery );
             
             return "";

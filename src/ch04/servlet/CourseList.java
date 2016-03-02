@@ -15,7 +15,7 @@ import ch04.*;
 
 /**
  * 针对教师查看选课结果页面的Servlet
- * @author ShenYK
+ * @author zhuqiang
  * @version 1.0
  */
 public class CourseList extends Common
@@ -61,10 +61,13 @@ public class CourseList extends Common
         {
             stmt = conn.createStatement();
             //执行SQL语句
+            //格式：IF(Condition,A,B)
+            //意义：当Condition为TRUE时，返回A；当Condition为FALSE时，返回B。
             String sQuery = "select course.*,IF(elective.course_id, count(*), 0) as amount "
                           + "from course left join elective "
                           + "on course.course_id = elective.course_id "
                           + "group by course.course_id";
+            System.out.println(sQuery);
             rs = stmt.executeQuery( sQuery );
             //留着在页面上显示的课程列表
             Vector courses = new Vector();
@@ -77,6 +80,7 @@ public class CourseList extends Common
                 course.setPoint( rs.getInt( "point" ) );
                 course.setTime1( rs.getString( "time_1" ) );
                 course.setTime2( rs.getString( "time_2" ) );
+                course.setClassroom( rs.getString( "classroom" ) );
                 course.setLimited( rs.getInt( "limited" ) );
                 course.setAmount( rs.getInt( "amount" ) );
                 
