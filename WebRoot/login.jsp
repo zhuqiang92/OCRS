@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=utf-8" %>
 <%@page language="java" import="java.util.*" %>
-<%@page language="java" import="ch04.*" %>
+<%@page language="java" import="ocrs.*" %>
 <%
 String sUsername = (String)session.getAttribute("username");
 if ( sUsername == null )
@@ -24,6 +24,34 @@ if ( sRole == null )
   <script language="JAVASCRIPT" src="login.js"></script>
   <link rel="stylesheet" href="common/css/bootstrap.min.css" type="text/css"></link>
   <style type="text/css">
+    .bg_container {
+    position: absolute;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+.bg_image {
+    background: url(img/login.png);
+    background-size: 1757px 845px;
+    height: 1191px;
+    width: 1884px;
+    background-repeat: no-repeat;
+    background-position: center top;
+    position: absolute;
+    left: 50%;
+    margin-left: -942px;
+    opacity: .8;
+}
+.login{
+    width: 650px;
+    height: 400px;
+    position: absolute;
+    top: 10%;
+    bottom: initial;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
     .form-login{
       max-width: 330px;
       padding: 15px;
@@ -52,16 +80,16 @@ if ( sRole == null )
 </head>
 
 <body>
-<img src="img/index_logo.gif"></img>
+<div class="bg_image"></div>
+<div class="login">
 <form class="form-login" name="form_main" action="servlet/Login" method="post" 
       onsubmit="return checkInput();" onreset="resetForm()">
+      <img src="img/index_logo.gif"></img>
 <h3>请登录选课系统</h3>
   <input type="text" class="form-control" name="username" placeholder="学号或用户名" value="<%=sUsername%>" required autofocus></input>
             
   <input type="password" class="form-control" name="password" placeholder="密码" required></input>
 
-
-     
   <input type="radio" name="role" value="0" style="border-width: 0px;"
 <%
 if( sRole.equals("0") )

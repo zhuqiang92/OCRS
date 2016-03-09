@@ -2,7 +2,7 @@
  * This product includes software developed by the
  * Apache Software Foundation (http://www.apache.org/).
  */
-package ch04.servlet;
+package ocrs.servlet;
 
 import java.io.*;
 import java.util.*;
@@ -11,11 +11,12 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import ch04.*;
+import ocrs.*;
+
 
 /**
  * 针对教师查看选课结果页面的Servlet
- * @author zhuqiang
+ * @author Zhu Qiang
  * @version 1.0
  */
 public class CourseList extends Common

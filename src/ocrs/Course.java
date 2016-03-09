@@ -1,4 +1,4 @@
-package ch04;
+package ocrs;
 
 //针对课程的bean类
 public class Course 

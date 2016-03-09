@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=utf-8" %>
 <%@page language="java" import="java.util.*" %>
-<%@page language="java" import="ch04.*" %>
+<%@page language="java" import="ocrs.*" %>
 <%@include file="inc/cmnAuthenticate.jsp" %>
 <%
 Vector vCourses = (Vector)session.getAttribute("courses");
@@ -37,28 +37,40 @@ if ( vCourses == null )
 </head>
 
 <body>
-<table border=0 cellpadding=0 cellspacing=0 height=10>
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-  </tr>
-</table>
+<header class="top" role="header">
+        <div class="container">
+            <a href="#" class="navbar-brand pull-left">江苏科技大学</a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </button>
+            <nav class="navbar-collapse collapse" role="navigation">
+                <ul class="navbar-nav nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+<div class="container">
+    <div class="row col-lg-2">
+        <ul class="nav nav-pills nav-stacked">
+          <li role="presentation" class="active"><a href="servlet/AddCourse">添加新课程</a></li>
+          <li role="presentation"><a href="#">学生选课情况</a></li>
+          <li role="presentation"><a href="logout.jsp">退出登录</a></li>
+       </ul>
+    </div>
+
+<div class="row col-lg-10" >
 <form name="form_main" action="servlet/CourseList" method="post" 
       onsubmit="return checkInput();" onreset="resetForm()">
-<table border=0 cellpadding=0 cellspacing=2 bgcolor="#000000" align=center>
+<tablealign=center>
   <tr>
     <td>
-      <table border=0 cellpadding=0 cellspacing=0 bgcolor="#ffffff" width=700>
+      <table width=700>
         <tr>
           <td align=left height=20>
             欢迎你，<font color=blue><%=session.getAttribute("realname")%></font>！
-          </td>
-          <td align=right>
-            <a href="servlet/AddCourse">添加新课程</a>
-            &nbsp;| &nbsp;
-            <a href="logout.jsp">退出登录</a>
-            &nbsp;
           </td>
         </tr>
       </table>
@@ -66,7 +78,7 @@ if ( vCourses == null )
   </tr>
   <tr>
     <td>
-      <table border=0 cellpadding=0 cellspacing=0 bgcolor="#ffffff"><!-- width=700 -->
+      <table>
         <tr>
           <td>
             <br>&nbsp;&nbsp;目前的选课情况如下：
@@ -78,8 +90,8 @@ if ( vCourses == null )
         </tr>
         <tr>
           <td align=center height=300 valign=top>
-             <table class="table table-hover table-bordered" border=0 cellpadding=0 cellspacing=2 bgcolor="#ffffff"><!-- width=680 -->
-              <thead bgcolor=#CCCCFF height=18>
+             <table class="table table-hover table-bordered">
+              <thead>
                 <th align=center>课程编号</th>
                 <th align=center>课程名称</th>
                 <th align=center>授课老师</th>
@@ -135,6 +147,27 @@ for ( int i=0; i<vCourses.size(); i++ )
     </td>
   </tr>
 </table>
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 </form>
+</div>
+</div>
 </body>
 </html>

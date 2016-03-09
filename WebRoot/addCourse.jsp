@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=utf-8" %>
 <%@page language="java" import="java.util.*" %>
-<%@page language="java" import="ch04.*" %>
+<%@page language="java" import="ocrs.*" %>
 <%@ include file="inc/cmnAuthenticate.jsp" %>
 <%
 Course course = (Course)session.getAttribute("course");
@@ -48,18 +48,34 @@ if ( course.getLimited() != 0 )
 </head>
 
 <body>
-    <div class="container">
-        <div class="row col-lg-offset-2">
-            <div class="row">
-                <h3 class="col-lg-8">欢迎你，<font color=blue><%=session.getAttribute("realname")%></font>！</h3>
-                <div class="col-lg-4">
-                    <a href="servlet/CourseList">课程情况一览</a> &nbsp;| &nbsp;
-                    <a href="logout.jsp">退出登录</a> &nbsp;
-                </div>
-            </div>
-            <h4>请输入新课程详细信息，并点击添加按钮：</h4>
+<header class="top" role="header">
+        <div class="container">
+            <a href="#" class="navbar-brand pull-left">江苏科技大学</a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </button>
+            <nav class="navbar-collapse collapse" role="navigation">
+                <ul class="navbar-nav nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="row col-lg-6 col-lg-offset-3 form-group">
+    </header>
+    <div class="container">
+    <div class="row col-lg-2">
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" class="active"><a href="servlet/CourseList">课程情况一览</a></li>
+        <li role="presentation"><a href="#">打印选课情况</a></li>
+        <li role="presentation"><a href="logout.jsp">退出登录</a></li>
+    </ul>
+    </div>
+    <div class="row col-lg-8">
+            <h3>欢迎你，<font color=blue><%=session.getAttribute("realname")%></font>！</h3>
+            <h4>请输入新课程详细信息，并点击添加按钮：</h4>
+    </div>
+    <div class="row col-lg-8 form-group">
             <form class="form-horizontal" name="form_main" action="servlet/AddCourse" method="post" onsubmit="return checkInput();" onreset="resetForm()">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">课程编号</label>

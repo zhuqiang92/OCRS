@@ -1,4 +1,4 @@
-package ch04.servlet;
+package ocrs.servlet;
 
 import java.io.*;
 import java.util.Hashtable;
@@ -7,11 +7,12 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import ch04.*;
+import ocrs.*;
+
 
 /**
  * 针对登录页面的Servlet
- * @author ShenYK
+ * @author Zhu Qiang
  * @version 1.0
  */
 public class Login extends Common

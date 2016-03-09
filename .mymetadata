@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="ch04"
+  name="OCRS"
   id="myeclipse.1452390456729"
-  context-root="/ch04"
+  context-root="/ocrs"
   j2ee-spec="5.0"
-  archive="ch04.war">
+  archive="OCRS.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>

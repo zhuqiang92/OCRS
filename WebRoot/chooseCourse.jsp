@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=utf-8" %>
 <%@page language="java" import="java.util.*" %>
-<%@page language="java" import="ch04.*" %>
+<%@page language="java" import="ocrs.*" %>
 <%@include file="inc/cmnAuthenticate.jsp" %>
 <%
 Vector vCourses = (Vector)session.getAttribute("courses");
@@ -40,51 +40,38 @@ if ( vCourses == null )
 </head>
 
 <body>
+    <header class="top" role="header">
+        <div class="container">
+            <a href="#" class="navbar-brand pull-left">江苏科技大学</a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </button>
+            <nav class="navbar-collapse collapse" role="navigation">
+                <ul class="navbar-nav nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 <div class="container">
+    <div class="row col-lg-2">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active"><a href="servlet/ViewCourse">已选课程列表</a></li>
+            <li role="presentation"><a href="#">打印课表</a></li>
+            <li role="presentation"><a href="logout.jsp">退出登录</a></li>
+        </ul>
+    </div>
+    <div class="row col-lg-10">
+    	<div>
+    		<h3> 欢迎你，<font color=blue><%=session.getAttribute("realname")%></font>！你可以选择的课程列表如下：</h3>
+    	</div>
+		<form name="form_main" action="servlet/ChooseCourse" method="post" 
+      		onsubmit="return checkInput();" onreset="resetForm()">
 
-<table >
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-  </tr>
-</table>
-<form name="form_main" action="servlet/ChooseCourse" method="post" 
-      onsubmit="return checkInput();" onreset="resetForm()">
-<table align=center>
-  <tr>
-    <td>
-      <table>
-        <tr>
-          <td align=left height=20>
-            欢迎你，<font color=blue><%=session.getAttribute("realname")%></font>！
-          </td>
-          <td align=right>
-            <a href="servlet/ViewCourse">已选课程列表</a>
-            &nbsp;| &nbsp;
-            <a href="logout.jsp">退出登录</a>
-            &nbsp;
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <table>
-        <tr>
-          <td>
-            <br>&nbsp;&nbsp;你可以选择的课程列表如下：
-          </td>
-        </tr>
-        <tr>
-          <td height=5>
-          </td>
-        </tr>
-        <tr>
-          <td align=center height=300 valign=top>
-            <table class="table table-hover table-bordered table-sort table-sort-search" border=0 cellpadding=0 cellspacing=2 bgcolor="#ffffff"><!-- width=680 -->
-              <thead bgcolor=#CCCCFF height=18>
+            <table class="table table-hover table-bordered table-sort table-sort-search">
+              <thead>
                 <th class="table-sort">课程编号</th>
                 <th class="table-sort">课程名称</th>
                 <th class="table-sort">授课老师</th>
@@ -149,17 +136,34 @@ else
 %>
               </tbody>
             </table>
-          </td>
-        </tr>
-        <tr>
-          <td height=10></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
 <input type="hidden" name="courseId" value="">
 </form>
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav>
+  <ul class="pager">
+    <li><a href="#">Previous</a></li>
+    <li><a href="#">Next</a></li>
+  </ul>
+</nav>
+</div>
 </div>
 <script type="text/javascript" src="common/jquery-2.2.0.min.js"></script>
 <script type="text/javascript" src="common/tablesort.js"></script>
